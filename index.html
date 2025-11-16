@@ -1,0 +1,160 @@
+'<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PH Michelin Map</title>
+    <link rel="icon" type="image/png" href="assets/bibgourmand.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <img
+        src="assets/banner.png"
+        alt="Michelin Banner"
+        class="sidebar-banner"
+      />
+
+      <div class="filter-section">
+        <label class="filter-title">Filter Restaurants</label>
+        <div class="filter-options">
+          <label
+            ><input type="radio" name="filter" value="all" checked />
+            <img src="assets/logo.png" class="icon" /> All</label
+          >
+          <label
+            ><input type="radio" name="filter" value="two_star" />
+            <img src="assets/star.png" class="icon" /><img
+              src="assets/star.png"
+              class="icon"
+            />
+            Two-Starred</label
+          >
+          <label
+            ><input type="radio" name="filter" value="one_star" />
+            <img src="assets/star.png" class="icon" /> One-Starred</label
+          >
+          <label
+            ><input type="radio" name="filter" value="bib_gourmand" />
+            <img src="assets/bibgourmand.png" class="icon" /> Bib
+            Gourmand</label
+          >
+          <label
+            ><input type="radio" name="filter" value="selected" />
+            <img src="assets/selected.jpg" class="icon" /> Selected</label
+          >
+        </div>
+      </div>
+
+      <!-- Restaurant Section -->
+      <div id="restaurantSection">
+        <div class="restaurant-title">
+          <img
+            src="assets/logo.png"
+            class="restaurant-icon"
+            alt="Michelin Icon"
+          />
+          <span>Restaurants</span>
+        </div>
+
+        <div id="restaurantList">
+          <button class="restaurant-pill" data-id="helm" data-stars="2">
+            <img src="assets/star.png" class="pill-icon" />
+            <img src="assets/star.png" class="pill-icon" />
+            Helm
+          </button>
+          <button class="restaurant-pill" data-id="celera" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Celera
+          </button>
+          <button class="restaurant-pill" data-id="hapag" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Hapag
+          </button>
+          <button class="restaurant-pill" data-id="linamnam" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Linamnam
+          </button>
+          <button class="restaurant-pill" data-id="kasa_palma" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Kása Palma
+          </button>
+          <button class="restaurant-pill" data-id="gallery_by_chele" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Gallery by Chele
+          </button>
+          <button class="restaurant-pill" data-id="toyo_eatery" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Toyo Eatery
+          </button>
+          <button class="restaurant-pill" data-id="inato" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Inatô
+          </button>
+          <button class="restaurant-pill" data-id="em_hanoi" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Em Hà Nội
+          </button>
+          <button class="restaurant-pill" data-id="palm_grill" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Palm Grill (Diliman)
+          </button>
+          <button class="restaurant-pill" data-id="lampara" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Lampara
+          </button>
+          <button class="restaurant-pill" data-id="your_local" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Your Local
+          </button>
+          <button class="restaurant-pill" data-id="cur8" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            CUR8
+          </button>
+          <button class="restaurant-pill" data-id="sarsa" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Sarsa
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div id="map"></div>
+
+    <!-- Travel Mode Buttons -->
+    <div id="travelModes">
+      <button id="driveMode" class="mode-btn active">Car</button>
+      <button id="motorMode" class="mode-btn">Motor</button>
+    </div>
+
+    <!-- Restaurant Info Card -->
+    <div id="restaurantCard" class="card">
+      <button id="closeCard" class="close-btn">×</button>
+      <img id="cardImage" src="" alt="Restaurant image" />
+      <div class="card-content">
+        <h3 id="cardTitle"></h3>
+        <p id="cardCategory" class="category"></p>
+        <p id="cardDescription"></p>
+        <p><b>Location:</b> <span id="cardAddress"></span></p>
+        <p><b>Contact:</b> <span id="cardContact"></span></p>
+        <p><b>Email:</b> <span id="cardEmail"></span></p>
+        <p>
+          <b>Website:</b>
+          <a id="cardWebsite" href="#" target="_blank">Visit Website</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Google Maps API -->
+    <script src="restaurantinfo.js"></script>    
+    <script src="map.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBinyHj4YlmSfxNt3CZGkLp8BSLFOgdBAw&callback=initMap"
+    ></script>
+  </body>
+</html>

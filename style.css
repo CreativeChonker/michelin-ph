@@ -1,0 +1,367 @@
+/* ===== GLOBAL ===== */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  display: flex;
+  overflow: hidden;
+}
+
+/* ===== SIDEBAR ===== */
+#sidebar {
+  width: 260px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.sidebar-banner {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+/* ===== FILTER SECTION ===== */
+.filter-section {
+  margin-top: 8px;
+}
+
+.filter-title {
+  display: block;
+  font-weight: 700;
+  color: #900;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.filter-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.filter-options input[type="radio"] {
+  accent-color: #b71c1c;
+  transform: scale(1.1);
+}
+
+.filter-options img.icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* ===== RESTAURANT SECTION ===== */
+#restaurantSection {
+  margin-top: 12px;
+}
+
+.restaurant-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: #900;
+  font-size: 15px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+}
+
+.restaurant-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* ===== RESTAURANT PILLS ===== */
+#restaurantList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.restaurant-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1.5px solid #ccc;
+  background: white;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: fit-content;
+}
+
+.restaurant-pill:hover {
+  border-color: #b71c1c;
+  color: #b71c1c;
+  transform: translateY(-1px);
+}
+
+.restaurant-pill:active {
+  transform: scale(0.96);
+}
+
+.restaurant-pill.active {
+  background: #fff5f5;
+  color: #900;
+  border-color: #b71c1c;
+  box-shadow: 0 0 0 2px rgba(183, 28, 28, 0.15);
+  animation: pillPulse 1s ease;
+}
+
+/* Pulse animation */
+@keyframes pillPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(183, 28, 28, 0.3);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(183, 28, 28, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(183, 28, 28, 0);
+  }
+}
+
+.pill-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* ===== MAP ===== */
+#map {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+/* ===== TRAVEL MODES ===== */
+#travelModes {
+  position: absolute;
+  top: 10px;
+  left: 280px;
+  display: flex;
+  gap: 8px;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 6;
+}
+
+.mode-btn {
+  border: none;
+  background: #f0f0f0;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mode-btn:hover {
+  background: #ddd;
+}
+
+.mode-btn.active {
+  background: #b02a37;
+  color: white;
+  font-weight: 600;
+}
+
+.mode-btn.active:hover {
+  background: #96212c;
+}
+
+/* ===== RESTAURANT CARD ===== */
+#restaurantCard {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 280px;
+  width: 360px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transform: translateX(-120%);
+  transition: all 0.4s ease;
+  z-index: 9999;
+  opacity: 0;
+}
+
+#restaurantCard.show {
+  transform: translateX(0);
+  display: block;
+  opacity: 1;
+}
+
+#restaurantCard.closing {
+  transform: translateX(-20px) scale(0.96);
+  opacity: 0;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s ease;
+}
+
+
+#cardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-content {
+  padding: 16px 18px;
+}
+
+#cardTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+#cardCategory {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #b02a37;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+#cardCategory img.icon {
+  width: 20px;
+  height: 20px;
+}
+
+#cardDescription {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.card-content p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.card-content b {
+  color: #222;
+}
+
+/* Close button */
+#closeCard {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.2s, color 0.2s;
+}
+
+#closeCard:hover {
+  color: #f5f5f5;
+  transform: scale(1.1);
+}
+
+/* Fade animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== SCROLLBAR ===== */
+#sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  #sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    height: auto;
+  }
+
+  #map {
+    height: 70vh;
+  }
+
+  #restaurantCard {
+    left: 20px;
+    right: 20px;
+    width: auto;
+    top: 60px;
+  }
+}
+
+/* === Smooth filter fade animation === */
+.restaurant-pill {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.2s;
+}
+
+.restaurant-pill.active-pill {
+  border: 2px solid #e74c3c;
+  background: rgba(231, 76, 60, 0.15);
+  color: #e74c3c;
+}
+
+.restaurant-pill.hide {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+/* Optional — to make the change feel less “jumpy” */
+#restaurantList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
