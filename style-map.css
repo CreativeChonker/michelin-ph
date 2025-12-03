@@ -2,7 +2,6 @@
 html,
 body {
   height: 100%;
-  width: 100%;
   margin: 0;
   padding: 0;
   font-family: "Inter", sans-serif;
@@ -22,6 +21,10 @@ body {
   box-sizing: border-box;
   overflow-y: visible;
   z-index: 10;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
 }
 
 .sidebar-banner {
@@ -67,6 +70,10 @@ body {
 /* ===== RESTAURANT SECTION ===== */
 #restaurantSection {
   margin-top: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .restaurant-title {
@@ -193,9 +200,9 @@ body {
 }
 
 .card-content {
-  padding: 22px 26px 26px 26px; 
-  line-height: 1.55;           
-  font-size: 15px;             
+  padding: 22px 26px 26px 26px;
+  line-height: 1.55;
+  font-size: 15px;
 }
 
 #cardTitle {
@@ -329,7 +336,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-height: 60vh;
+  flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
   padding-right: 6px;
@@ -560,7 +567,7 @@ body {
   font-weight: 600;
   color: #222;
   border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
   white-space: nowrap;
   transition: opacity 0.25s ease;
 }
@@ -574,7 +581,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
@@ -640,8 +647,8 @@ body {
 }
 
 .website-pill a {
-  color: inherit;          /* match pill color */
-  text-decoration: none;  
+  color: inherit; /* match pill color */
+  text-decoration: none;
   font-weight: 500;
 }
 
