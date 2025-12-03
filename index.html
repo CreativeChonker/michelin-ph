@@ -1,160 +1,189 @@
-'<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PH Michelin Map</title>
-    <link rel="icon" type="image/png" href="assets/bibgourmand.png" />
-    <link rel="stylesheet" href="style.css" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+  default-src 'self';
+
+  script-src
+    'self'
+    https://maps.googleapis.com
+    https://cdnjs.cloudflare.com
+    'unsafe-inline'
+    'unsafe-eval';
+
+  style-src
+    'self'
+    https://fonts.googleapis.com
+    https://cdnjs.cloudflare.com
+    'unsafe-inline';
+
+  style-src-elem
+    'self'
+    https://fonts.googleapis.com
+    https://cdnjs.cloudflare.com
+    'unsafe-inline';
+
+  img-src
+    'self'
+    data:
+    blob:
+    https://maps.gstatic.com
+    https://maps.googleapis.com
+    https://*.googleusercontent.com;
+
+  font-src
+    'self'
+    https://fonts.gstatic.com
+    https://cdnjs.cloudflare.com;
+
+  connect-src
+    'self'
+    data:
+    https://maps.googleapis.com
+    https://www.gstatic.com;
+
+  worker-src
+    'self'
+    blob:
+    https://maps.googleapis.com
+    https://www.gstatic.com;
+
+  child-src
+    blob:
+    https://maps.googleapis.com
+    https://www.gstatic.com;
+
+  object-src 'none';
+"
+    />
+
+    <title>Michelin PH</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon_io/favicon.ico" />
+    <link rel="stylesheet" href="style-home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oxygen:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <!-- Sidebar -->
-    <div id="sidebar">
-      <img
-        src="assets/banner.png"
-        alt="Michelin Banner"
-        class="sidebar-banner"
-      />
-
-      <div class="filter-section">
-        <label class="filter-title">Filter Restaurants</label>
-        <div class="filter-options">
-          <label
-            ><input type="radio" name="filter" value="all" checked />
-            <img src="assets/logo.png" class="icon" /> All</label
-          >
-          <label
-            ><input type="radio" name="filter" value="two_star" />
-            <img src="assets/star.png" class="icon" /><img
-              src="assets/star.png"
-              class="icon"
-            />
-            Two-Starred</label
-          >
-          <label
-            ><input type="radio" name="filter" value="one_star" />
-            <img src="assets/star.png" class="icon" /> One-Starred</label
-          >
-          <label
-            ><input type="radio" name="filter" value="bib_gourmand" />
-            <img src="assets/bibgourmand.png" class="icon" /> Bib
-            Gourmand</label
-          >
-          <label
-            ><input type="radio" name="filter" value="selected" />
-            <img src="assets/selected.jpg" class="icon" /> Selected</label
-          >
-        </div>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="/" class="logo-text oxygen-bold">PH Michelin Guide</a>
       </div>
 
-      <!-- Restaurant Section -->
-      <div id="restaurantSection">
-        <div class="restaurant-title">
-          <img
-            src="assets/logo.png"
-            class="restaurant-icon"
-            alt="Michelin Icon"
+      <div class="nav-center oxygen-regular">
+        <a href="map.html">Map</a>
+        <a href="#" class="nav-disabled">Restaurants</a>
+        <a href="#" class="nav-disabled">Ratings</a>
+      </div>
+
+      <div class="nav-right oxygen-regular">
+        <div class="nav-search-container">
+          <input
+            type="text"
+            class="nav-search"
+            placeholder="Search restaurants..."
           />
-          <span>Restaurants</span>
+          <div class="search-dropdown"></div>
         </div>
+        <button class="nav-login nav-disabled">Login</button>
+      </div>
+    </header>
 
-        <div id="restaurantList">
-          <button class="restaurant-pill" data-id="helm" data-stars="2">
-            <img src="assets/star.png" class="pill-icon" />
-            <img src="assets/star.png" class="pill-icon" />
-            Helm
-          </button>
-          <button class="restaurant-pill" data-id="celera" data-stars="1">
-            <img src="assets/star.png" class="pill-icon" />
-            Celera
-          </button>
-          <button class="restaurant-pill" data-id="hapag" data-stars="1">
-            <img src="assets/star.png" class="pill-icon" />
-            Hapag
-          </button>
-          <button class="restaurant-pill" data-id="linamnam" data-stars="1">
-            <img src="assets/star.png" class="pill-icon" />
-            Linamnam
-          </button>
-          <button class="restaurant-pill" data-id="kasa_palma" data-stars="1">
-            <img src="assets/star.png" class="pill-icon" />
-            Kása Palma
-          </button>
-          <button class="restaurant-pill" data-id="gallery_by_chele" data-stars="1">
-            <img src="assets/star.png" class="pill-icon" />
-            Gallery by Chele
-          </button>
-          <button class="restaurant-pill" data-id="toyo_eatery" data-stars="1">
-            <img src="assets/star.png" class="pill-icon" />
-            Toyo Eatery
-          </button>
-          <button class="restaurant-pill" data-id="inato" data-stars="1">
-            <img src="assets/star.png" class="pill-icon" />
-            Inatô
-          </button>
-          <button class="restaurant-pill" data-id="em_hanoi" data-stars="0">
-            <img src="assets/bibgourmand.png" class="pill-icon" />
-            Em Hà Nội
-          </button>
-          <button class="restaurant-pill" data-id="palm_grill" data-stars="0">
-            <img src="assets/bibgourmand.png" class="pill-icon" />
-            Palm Grill (Diliman)
-          </button>
-          <button class="restaurant-pill" data-id="lampara" data-stars="0">
-            <img src="assets/bibgourmand.png" class="pill-icon" />
-            Lampara
-          </button>
-          <button class="restaurant-pill" data-id="your_local" data-stars="0">
-            <img src="assets/bibgourmand.png" class="pill-icon" />
-            Your Local
-          </button>
-          <button class="restaurant-pill" data-id="cur8" data-stars="0">
-            <img src="assets/bibgourmand.png" class="pill-icon" />
-            CUR8
-          </button>
-          <button class="restaurant-pill" data-id="sarsa" data-stars="0">
-            <img src="assets/bibgourmand.png" class="pill-icon" />
-            Sarsa
-          </button>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-card oxygen-regular">
+          <h1>Explore Michelin Restaurants in the Philippines</h1>
+          <p>
+            Discover the country’s top-rated dining spots — from two-star
+            tasting menus to comforting Bib Gourmands.
+          </p>
+
+          <a class="hero-btn" href="map.html">Open Interactive Map</a>
         </div>
       </div>
-    </div>
 
-    <!-- Map -->
-    <div id="map"></div>
+      <div class="roadmap-card oxygen-regular">
+        <h3>Roadmap & Upcoming Features</h3>
 
-    <!-- Travel Mode Buttons -->
-    <div id="travelModes">
-      <button id="driveMode" class="mode-btn active">Car</button>
-      <button id="motorMode" class="mode-btn">Motor</button>
-    </div>
-
-    <!-- Restaurant Info Card -->
-    <div id="restaurantCard" class="card">
-      <button id="closeCard" class="close-btn">×</button>
-      <img id="cardImage" src="" alt="Restaurant image" />
-      <div class="card-content">
-        <h3 id="cardTitle"></h3>
-        <p id="cardCategory" class="category"></p>
-        <p id="cardDescription"></p>
-        <p><b>Location:</b> <span id="cardAddress"></span></p>
-        <p><b>Contact:</b> <span id="cardContact"></span></p>
-        <p><b>Email:</b> <span id="cardEmail"></span></p>
-        <p>
-          <b>Website:</b>
-          <a id="cardWebsite" href="#" target="_blank">Visit Website</a>
-        </p>
+        <ul class="roadmap-list">
+          <li><span class="dot done"></span> Restaurant search</li>
+          <li><span class="dot done"></span> Map Markers</li>
+          <li><span class="dot"></span> Selected Restaurants</li>
+          <li><span class="dot"></span> User reviews & rating system</li>
+          <li><span class="dot"></span> Restaurants page</li>
+          <li><span class="dot"></span> Dark mode toggle</li>
+          <li><span class="dot"></span> Mobile app version</li>
+        </ul>
       </div>
-    </div>
+    </section>
 
-    <!-- Google Maps API -->
-    <script src="restaurantinfo.js"></script>    
-    <script src="map.js"></script>
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBinyHj4YlmSfxNt3CZGkLp8BSLFOgdBAw&callback=initMap"
-    ></script>
+    <!-- FEATURED INFINITE SCROLL -->
+    <section class="preview fade-up">
+      <h2 class="section-title">Featured Restaurants</h2>
+
+      <div class="infinite-scroll">
+        <div class="scroll-track" id="scrollTrack"></div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-left">
+          <div class="footer-avatar-wrapper">
+            <img src="assets/avatar.jpg" class="footer-avatar-pixel" />
+          </div>
+          <div>
+            <h3>Designed & built by Mike Muñoz</h3>
+            <p>Computer Science Student & Developer (2025)</p>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <a
+            href="https://www.facebook.com/mikeerickson.munoz/"
+            target="_blank"
+            class="footer-icon"
+          >
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a
+            href="https://www.instagram.com/mike.portraits"
+            target="_blank"
+            class="footer-icon"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://github.com/CreativeChonker"
+            target="_blank"
+            class="footer-icon"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom oxygen-regular">
+        © 2025 PH Michelin Map — Not affiliated with Michelin Guide.
+      </div>
+    </footer>
+
+    <script src="restaurantinfo.js"></script>
+    <script src="home.js"></script>
   </body>
 </html>

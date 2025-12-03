@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+  default-src 'self';
+
+  script-src
+    'self'
+    https://maps.googleapis.com
+    https://cdnjs.cloudflare.com
+    'unsafe-inline'
+    'unsafe-eval';
+
+  style-src
+    'self'
+    https://fonts.googleapis.com
+    https://cdnjs.cloudflare.com
+    'unsafe-inline';
+
+  style-src-elem
+    'self'
+    https://fonts.googleapis.com
+    https://cdnjs.cloudflare.com
+    'unsafe-inline';
+
+  img-src
+    'self'
+    data:
+    blob:
+    https://maps.gstatic.com
+    https://maps.googleapis.com
+    https://*.googleusercontent.com;
+
+  font-src
+    'self'
+    https://fonts.gstatic.com
+    https://cdnjs.cloudflare.com;
+
+  connect-src
+    'self'
+    data:
+    https://maps.googleapis.com
+    https://www.gstatic.com;
+
+  worker-src
+    'self'
+    blob:
+    https://maps.googleapis.com
+    https://www.gstatic.com;
+
+  child-src
+    blob:
+    https://maps.googleapis.com
+    https://www.gstatic.com;
+
+  object-src 'none';
+"
+    />
+
+    <title>Michelin PH | Map</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon_io/favicon.ico" />
+    <link rel="stylesheet" href="style-map.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <a href="index.html">
+        <img
+          src="assets/banner.png"
+          alt="Michelin Banner"
+          class="sidebar-banner"
+      /></a>
+
+      <!-- SEARCH BAR -->
+      <div class="search-container">
+        <input
+          type="text"
+          id="restaurantSearch"
+          placeholder="Search restaurants..."
+        />
+      </div>
+
+      <div class="filter-section oxygen-regular">
+        <label class="filter-title">Filter Restaurants</label>
+        <div class="filter-options">
+          <label
+            ><input type="radio" name="filter" value="all" checked />
+            <img src="assets/logo.png" class="icon" /> All</label
+          >
+          <label
+            ><input type="radio" name="filter" value="two_star" />
+            <img src="assets/star.png" class="icon" /><img
+              src="assets/star.png"
+              class="icon"
+            />
+            Two-Starred</label
+          >
+          <label
+            ><input type="radio" name="filter" value="one_star" />
+            <img src="assets/star.png" class="icon" /> One-Starred</label
+          >
+          <label
+            ><input type="radio" name="filter" value="bib_gourmand" />
+            <img src="assets/bibgourmand.png" class="icon" /> Bib
+            Gourmand</label
+          >
+          <label
+            ><input type="radio" name="filter" value="selected" />
+            <img src="assets/selected.jpg" class="icon" /> Selected</label
+          >
+          <label
+            ><input type="radio" name="filter" value="favorites" />
+            <i class="fa-solid fa-heart" style="color: #c2042b"></i>
+            Favorites</label
+          >
+        </div>
+      </div>
+
+      <!-- Restaurant Section -->
+      <div id="restaurantSection">
+        <div class="restaurant-title">
+          <img
+            src="assets/logo.png"
+            class="restaurant-icon"
+            alt="Michelin Icon"
+          />
+          <span>Restaurants</span>
+        </div>
+
+        <div id="restaurantList">
+          <button class="restaurant-pill" data-id="helm" data-stars="2">
+            <img src="assets/star.png" class="pill-icon" />
+            <img src="assets/star.png" class="pill-icon" />
+            Helm
+            <i class="fa-regular fa-heart heart-toggle" data-id="helm"></i>
+          </button>
+          <button class="restaurant-pill" data-id="celera" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Celera
+            <i class="fa-regular fa-heart heart-toggle" data-id="celera"></i>
+          </button>
+          <button class="restaurant-pill" data-id="hapag" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Hapag
+            <i class="fa-regular fa-heart heart-toggle" data-id="hapag"></i>
+          </button>
+          <button class="restaurant-pill" data-id="linamnam" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Linamnam
+            <i class="fa-regular fa-heart heart-toggle" data-id="linamnam"></i>
+          </button>
+          <button class="restaurant-pill" data-id="kasa_palma" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Kása Palma
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="kasa_palma"
+            ></i>
+          </button>
+          <button
+            class="restaurant-pill"
+            data-id="gallery_by_chele"
+            data-stars="1"
+          >
+            <img src="assets/star.png" class="pill-icon" />
+            Gallery by Chele
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="gallery_by_chele"
+            ></i>
+          </button>
+          <button class="restaurant-pill" data-id="toyo_eatery" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Toyo Eatery
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="toyo_eatery"
+            ></i>
+          </button>
+          <button class="restaurant-pill" data-id="inato" data-stars="1">
+            <img src="assets/star.png" class="pill-icon" />
+            Inatô
+            <i class="fa-regular fa-heart heart-toggle" data-id="inato"></i>
+          </button>
+          <button class="restaurant-pill" data-id="em_hanoi" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Em Hà Nội
+            <i class="fa-regular fa-heart heart-toggle" data-id="em_hanoi"></i>
+          </button>
+          <button class="restaurant-pill" data-id="palm_grill" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Palm Grill (Diliman)
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="palm_grill"
+            ></i>
+          </button>
+          <button class="restaurant-pill" data-id="lampara" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Lampara
+            <i class="fa-regular fa-heart heart-toggle" data-id="lampara"></i>
+          </button>
+          <button class="restaurant-pill" data-id="your_local" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Your Local
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="your_local"
+            ></i>
+          </button>
+          <button class="restaurant-pill" data-id="cur8" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            CUR8
+            <i class="fa-regular fa-heart heart-toggle" data-id="cur8"></i>
+          </button>
+          <button class="restaurant-pill" data-id="sarsa" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Sarsa
+            <i class="fa-regular fa-heart heart-toggle" data-id="sarsa"></i>
+          </button>
+          <button class="restaurant-pill" data-id="cochi" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            COCHI
+            <i class="fa-regular fa-heart heart-toggle" data-id="cochi"></i>
+          </button>
+          <button
+            class="restaurant-pill"
+            data-id="the_underbelly"
+            data-stars="0"
+          >
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            The Underbelly
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="the_underbelly"
+            ></i>
+          </button>
+          <button class="restaurant-pill" data-id="halong" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Hálong
+            <i class="fa-regular fa-heart heart-toggle" data-id="halong"></i>
+          </button>
+          <button
+            class="restaurant-pill"
+            data-id="pares_batchoy_food_house"
+            data-stars="0"
+          >
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Pares Batchoy <br />Food House
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="pares_batchoy_food_house"
+            ></i>
+          </button>
+          <button
+            class="restaurant-pill"
+            data-id="taqueria_franco"
+            data-stars="0"
+          >
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Taquería Franco
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="taqueria_franco"
+            ></i>
+          </button>
+          <button
+            class="restaurant-pill"
+            data-id="manam_at_the_triangle"
+            data-stars="0"
+          >
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Manam at the Triangle
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="manam_at_the_triangle"
+            ></i>
+          </button>
+          <button class="restaurant-pill" data-id="los_tacos" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Los Tacos
+            <i class="fa-regular fa-heart heart-toggle" data-id="los_tacos"></i>
+          </button>
+          <button class="restaurant-pill" data-id="cabel" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Cabel
+            <i class="fa-regular fa-heart heart-toggle" data-id="cabel"></i>
+          </button>
+          <button
+            class="restaurant-pill"
+            data-id="pilyas_kitchen"
+            data-stars="0"
+          >
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Pilya's Kitchen
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="pilyas_kitchen"
+            ></i>
+          </button>
+          <button class="restaurant-pill" data-id="bolero" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Bolero
+            <i class="fa-regular fa-heart heart-toggle" data-id="bolero"></i>
+          </button>
+          <button class="restaurant-pill" data-id="kumba" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Kumba
+            <i class="fa-regular fa-heart heart-toggle" data-id="kumba"></i>
+          </button>
+          <button class="restaurant-pill" data-id="la_pita" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            La Pita
+            <i class="fa-regular fa-heart heart-toggle" data-id="la_pita"></i>
+          </button>
+          <button
+            class="restaurant-pill"
+            data-id="the_pig_and_palm"
+            data-stars="0"
+          >
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            The Pig & Palm
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="the_pig_and_palm"
+            ></i>
+          </button>
+          <button class="restaurant-pill" data-id="brick_corner" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Brick Corner
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="brick_corner"
+            ></i>
+          </button>
+          <button class="restaurant-pill" data-id="lasa" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Lasa
+            <i class="fa-regular fa-heart heart-toggle" data-id="lasa"></i>
+          </button>
+          <button class="restaurant-pill" data-id="esmen" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Esmen
+            <i class="fa-regular fa-heart heart-toggle" data-id="esmen"></i>
+          </button>
+          <button
+            class="restaurant-pill"
+            data-id="abaseria_deli_cafe"
+            data-stars="0"
+          >
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Abaseria Deli & Cafe
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="abaseria_deli_cafe"
+            ></i>
+          </button>
+          <button class="restaurant-pill" data-id="some_thai" data-stars="0">
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            SOME THAI
+            <i class="fa-regular fa-heart heart-toggle" data-id="some_thai"></i>
+          </button>
+          <button
+            class="restaurant-pill"
+            data-id="morning_sun_eatery"
+            data-stars="0"
+          >
+            <img src="assets/bibgourmand.png" class="pill-icon" />
+            Morning Sun Eatery
+            <i
+              class="fa-regular fa-heart heart-toggle"
+              data-id="morning_sun_eatery"
+            ></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div id="map"></div>
+
+    <div class="michelin-info-bar">
+      <div class="info-item">
+        <img src="assets/star.png" class="info-icon" />
+        <div class="info-text">
+          <b>2 Stars</b>
+          <span>Excellent cooking</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <img src="assets/star.png" class="info-icon" />
+        <div class="info-text">
+          <b>1 Star</b>
+          <span>High quality cooking</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <img src="assets/bibgourmand.png" class="info-icon" />
+        <div class="info-text">
+          <b>Bib Gourmand</b>
+          <span>Good quality & good value cooking</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <img src="assets/selected.jpg" class="info-icon" />
+        <div class="info-text">
+          <b>Selected Restaurants</b>
+          <span>Good cooking</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="restaurantCard" class="card">
+      <button id="closeCard" class="close-btn">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </button>
+
+      <img id="cardImage" src="" alt="Restaurant image" />
+
+      <div class="card-content">
+        <div class="card-title-row">
+          <h3 id="cardTitle"></h3>
+          <div class="title-actions">
+            <i
+              id="directionsBtn"
+              class="fa-solid fa-diamond-turn-right directions-icon"
+            ></i>
+            <i id="heartBtn" class="fa-regular fa-heart card-heart"></i>
+          </div>
+        </div>
+
+        <p id="cardCategory" class="category"></p>
+        <p id="cardDescription"></p>
+        <p><b>Location:</b> <span id="cardAddress"></span></p>
+        <p><b>Contact:</b> <span id="cardContact"></span></p>
+        <p><b>Email:</b> <span id="cardEmail"></span></p>
+
+        <div class="website-pill">
+          <a id="cardWebsite" href="#" target="_blank">
+            Visit Website <i class="fa-solid fa-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Maps API -->
+    <script src="restaurantinfo.js"></script>
+    <script src="favorites.js"></script>
+    <script src="map.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBinyHj4YlmSfxNt3CZGkLp8BSLFOgdBAw&callback=initMap&libraries=marker, geometry"
+    ></script>
+  </body>
+</html>
